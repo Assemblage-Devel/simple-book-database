@@ -11,13 +11,12 @@ def add_book(name, author):
     books.append({"name": name, "author": author, "read": False})
 
 
-def list_books():
+def get_books():
     """
-    function lists formatted entries in database
+    function retrieves entries from database
     """
-    for book in books:
-        read = "YES" if book["read"] else "NO"
-        print(f"{book['name']} by {book['author']}, read: {read}")
+    return books
+    
 
 def mark_book(name, author):
     """

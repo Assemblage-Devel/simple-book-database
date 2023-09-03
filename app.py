@@ -55,9 +55,13 @@ def add_book():
 
 def list_books():
     """
-    List function calls database to list all entries for books (title, author, and read status!)
+    List function retrieves books from the database and prints a formatted 
+    list cotaining (title, author, and read status!)
     """
-    db.list_books()
+    books = db.get_books()
+    for book in books:
+        read = "YES" if book["read"] else "NO"
+        print(f"{book['name']} by {book['author']}, read: {read}")
 
 
 def mark_book():
