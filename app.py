@@ -43,29 +43,23 @@ def menu():
 def add_book():
     name = input("Book Title: ")
     author = input("Author: ")
-    db.books
+    db.add_book(name, author)
 
 
 def list_books():
-    print(db.books)
+    db.list_books()
 
 
 def mark_book():
     name = input("Book Title: ")
     author = input("Author: ")
-    db.books
+    db.mark_book(name, author)
 
 
 def del_book():
     name = input("Book Title: ")
     author = input("Author: ")
-    db.books
-
-
-# user input name and author of a book to add to database
-# list all books in the database
-# user input name to edit book status
-# user input name to delete from database
+    db.del_book(name, author)
 
 
 menu()
