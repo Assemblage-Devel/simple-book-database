@@ -17,6 +17,9 @@ Your choice: """
 
 
 def menu():
+    """
+    Menu for accessing the database and selecting an operation to execute
+    """
     user_input = ' '
     while user_input != 'q':
         user_input = input(USER_CHOICE)
@@ -41,22 +44,37 @@ def menu():
 
 
 def add_book():
+    """
+    Add book function - gets user input for title and author,
+    function calls to the database to add the entry
+    """
     name = input("Book Title: ")
     author = input("Author: ")
     db.add_book(name, author)
 
 
 def list_books():
+    """
+    List function calls database to list all entries for books (title, author, and read status!)
+    """
     db.list_books()
 
 
 def mark_book():
+    """
+    Mark function - gets user input for title and author,
+    function calls database to modify the read status to TRUE
+    """
     name = input("Book Title: ")
     author = input("Author: ")
     db.mark_book(name, author)
 
 
 def del_book():
+    """
+    Del function - gets user input for title and author,
+    function calls database to remove an entry.
+    """
     name = input("Book Title: ")
     author = input("Author: ")
     db.del_book(name, author)
