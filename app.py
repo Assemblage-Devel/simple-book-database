@@ -21,6 +21,7 @@ def menu():
     Menu for accessing the database and selecting an operation to execute
     """
 
+    db.create_book_table()
     user_input = ' '
     while user_input != 'q':
         user_input = input(USER_CHOICE)
@@ -83,7 +84,7 @@ def del_book():
     Del function - gets user input for title and author,
     function calls database to remove an entry.
     """
-    
+
     name = input("Book Title: ")
     author = input("Author: ")
     db.del_book(name, author)

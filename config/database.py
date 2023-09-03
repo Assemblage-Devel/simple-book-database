@@ -8,6 +8,11 @@ name,author,read/n
 books_file = "books.txt"
 
 
+def create_book_table():
+    with open("books.txt", "w"):
+        pass
+
+
 def add_book(name, author):
     """
     function adds provided book entry to database
@@ -55,7 +60,7 @@ def del_book(name, author):
     """
     function removes provided entry from database
     """
-    
+
     books = get_books()
     books = [book for book in books if book["name"] != name and book["author"] != author]
 
