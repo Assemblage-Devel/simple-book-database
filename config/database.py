@@ -1,41 +1,65 @@
 """
-Concerened with storing, retrieving, editing and deleting books from the 'in memory' database
+Concerened with storing, retrieving, editing and deleting books from csv file
+Format of the csv file:
+
+name,author,read/n
 """
 
-books = []
+books_file = "books.txt"
+
 
 def add_book(name, author):
     """
     function adds provided book entry to database
     """
-    books.append({"name": name, "author": author, "read": False})
+
+    with open(books_file, "a") as file:
+        file.write(f"{name},{author},0\n")
 
 
 def get_books():
     """
     function retrieves entries from database
     """
-    return books
+
+    with open(books_file, "r") as file:
+        lines = [book.strip().split(",") for book in file.readlines()]
+    
+    return [
+        {"name": line[0], "author": line[1], "read": line[2]}
+        for line in lines
+    ]
     
 
 def mark_book(name, author):
     """
     function marks provided entry in database to read: True
     """
+
+    books = get_books()
+
     for book in books:
         if book["name"] and  book["author"] == name and author:
-            book["read"] = True
-        else:
-            pass
+            book["read"] = '1'
+    _save_all_books(books)
+
+
+def _save_all_books(books):
+
+    with open(books_file, "w") as file:
+        for book in books:
+            file.write(f"{book['name']},{book['author']},{book['read']}\n")
 
 
 def del_book(name, author):
     """
     function removes provided entry from database
     """
-    global books
-
+    
+    books = get_books()
     books = [book for book in books if book["name"] != name and book["author"] != author]
+
+    _save_all_books(books)
 
 
 
