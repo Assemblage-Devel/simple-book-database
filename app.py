@@ -22,16 +22,16 @@ def menu():
         user_input = input(USER_CHOICE)
         
         if user_input == 'a':
-            pass
+            add_book()
 
         elif user_input == 'l':
-            pass
+            list_books()
 
         elif user_input == 'm':
-            pass
+            mark_book()
 
         elif user_input == 'd':
-            pass
+            del_book()
 
         elif user_input == 'q':
             print("Programme terminated")
@@ -39,6 +39,27 @@ def menu():
         else:
             print("That choice doesn't exist, try again.")
 
+
+def add_book():
+    name = input("Book Title: ")
+    author = input("Author: ")
+    db.books
+
+
+def list_books():
+    print(db.books)
+
+
+def mark_book():
+    name = input("Book Title: ")
+    author = input("Author: ")
+    db.books
+
+
+def del_book():
+    name = input("Book Title: ")
+    author = input("Author: ")
+    db.books
 
 
 # user input name and author of a book to add to database
