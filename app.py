@@ -17,23 +17,23 @@ Your choice: """
 
 
 def menu():
-    user_choice = ' '
-    while user_choice != 'q':
+    user_input = ' '
+    while user_input != 'q':
         user_choice = input(USER_CHOICE)
         
-        if user_choice == 'a':
+        if user_input == 'a':
             pass
 
-        elif user_choice == 'l':
+        elif user_input == 'l':
             pass
 
-        elif user_choice == 'm':
+        elif user_input == 'm':
             pass
 
-        elif user_choice == 'd':
+        elif user_input == 'd':
             pass
 
-        elif user_choice == 'q':
+        elif user_input == 'q':
             print("Programme terminated")
             break
         else:
