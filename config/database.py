@@ -10,10 +10,15 @@ def add_book(name, author):
 
 def list_books():
     for book in books:
-        print(f"{book['name']} by {book['author']}")
+        read = "YES" if book["read"] else "NO"
+        print(f"{book['name']} by {book['author']}, read: {read}")
 
 def mark_book(name, author):
-    pass
+    for book in books:
+        if book["name"] and  book["author"] == name and author:
+            book["read"] = True
+        else:
+            pass
 
 
 def del_book(name, author):
