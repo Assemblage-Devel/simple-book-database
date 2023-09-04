@@ -1,6 +1,6 @@
 """
-Concerened with storing, retrieving, editing and deleting books from csv file
-Format of the csv file:
+Concerened with storing, retrieving, editing and deleting books from json file
+Format of the json file:
 
 name,author,read/n
 """
