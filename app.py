@@ -1,5 +1,5 @@
 """
-a Books database app with menu
+a Books database app with menu api
 """
 
 from config import database as db
@@ -64,7 +64,7 @@ def list_books():
 
     books = db.get_books()
     for book in books:
-        read = 'YES' if book['read'] == '1' else 'NO'
+        read = 'YES' if book['read'] else 'NO'
         print(f"{book['name']} by {book['author']}, read: {read}")
 
 
