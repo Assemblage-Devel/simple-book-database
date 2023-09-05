@@ -20,8 +20,12 @@ def menu():
     """
     Menu for accessing the database and selecting an operation to execute
     """
+    
+    try:
+        db.get_books()
+    except:
+        db.create_book_table()
 
-    db.create_book_table()
     user_input = ' '
     while user_input != 'q':
         user_input = input(USER_CHOICE)
