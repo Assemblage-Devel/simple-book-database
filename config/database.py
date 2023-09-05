@@ -20,7 +20,6 @@ def add_book(name, author):
     """
     function adds provided book entry to database
     """
-
     connection = sqlite3.connect("data.db")
     cursor = connection.cursor()
 
@@ -34,7 +33,6 @@ def get_books():
     """
     function retrieves entries from database
     """
-
     connection = sqlite3.connect("data.db")
     cursor = connection.cursor()
 
@@ -45,35 +43,31 @@ def get_books():
 
     return books
     
-
-def _save_all_books(books):
-
-    with open(books_file, "w") as file:
-        json.dump(books, file)
-
     
 def mark_book(name, author):
     """
     function marks provided entry in database to read: True
     """
+    connection = sqlite3.connect("data.db")
+    cursor = connection.cursor()
 
-    books = get_books()
-
-    for book in books:
-        if book["name"] and  book["author"] == name and author:
-            book["read"] = True
-    _save_all_books(books)
+    cursor.execute("UPDATE books SET read=1 WHERE name=? AND author=?", (name, author))
+    
+    connection.commit()
+    connection.close()
 
 
 def del_book(name, author):
     """
     function removes provided entry from database
     """
+    connection = sqlite3.connect("data.db")
+    cursor = connection.cursor()
 
-    books = get_books()
-    books = [book for book in books if book["name"] != name and book["author"] != author]
-
-    _save_all_books(books)
+    cursor.execute("DELETE FROM books WHERE name=? AND author=?", (name, author))
+    
+    connection.commit()
+    connection.close()
 
 
 
