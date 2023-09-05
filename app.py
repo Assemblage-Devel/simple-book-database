@@ -1,5 +1,4 @@
 from config import database as db
-import sqlite3
 
 """
 a Books database app with menu api
