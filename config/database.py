@@ -22,7 +22,7 @@ def create_book_table():
     connection = sqlite3.connect("data.db")
     cursor = connection.cursor()
 
-    cursor.execute("CREATE TABLE books(name text primary key, author text, read integer)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS books(name text primary key, author text, read integer)")
     
     connection.commit()
     connection.close()
@@ -33,9 +33,13 @@ def add_book(name, author):
     function adds provided book entry to database
     """
 
-    books = get_books()
-    books.append({"name": name, "author": author, "read": False})
-    _save_all_books(books)
+    connection = sqlite3.connect("data.db")
+    cursor = connection.cursor()
+
+    cursor.execute(f"INSERT INTO books VALUES('{name}', '{author}', 0)")
+    
+    connection.commit()
+    connection.close()
 
 
 def get_books():
@@ -43,8 +47,13 @@ def get_books():
     function retrieves entries from database
     """
 
-    with open(books_file, "r") as file:
-        return json.load(file) # returns a list of dics
+    connection = sqlite3.connect("data.db")
+    cursor = connection.cursor()
+
+    # cursor.execute("")
+    
+    connection.commit()
+    connection.close()
     
 
 def _save_all_books(books):
