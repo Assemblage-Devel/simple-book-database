@@ -36,7 +36,7 @@ def add_book(name, author):
     connection = sqlite3.connect("data.db")
     cursor = connection.cursor()
 
-    cursor.execute(f"INSERT INTO books VALUES('{name}', '{author}', 0)")
+    cursor.execute("INSERT INTO books VALUES(?, ?, 0)",(name, author))
     
     connection.commit()
     connection.close()
