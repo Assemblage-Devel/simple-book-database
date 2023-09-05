@@ -1,21 +1,9 @@
 import sqlite3
 
 """
-Concerened with storing, retrieving, editing and deleting books from json file
-Format of the json file:
+Concerened with storing, retrieving, editing and deleting books from sqlite database
 
-[
-    {
-        "name": "title,
-        "author": "author",
-        "read": True
-    }
-
-]
 """
-
-
-books_file = "books.json"
 
 
 def create_book_table():
@@ -50,10 +38,12 @@ def get_books():
     connection = sqlite3.connect("data.db")
     cursor = connection.cursor()
 
-    # cursor.execute("")
-    
-    connection.commit()
+    cursor.execute("SELECT * FROM books")
+    # books = cursor.fetchall() # list of tupples [(name,author,read),(..),(..)]
+    books = [{'name': row[0], 'author': row[1], 'read': row[2]} for row in cursor.fetchall()]
     connection.close()
+
+    return books
     
 
 def _save_all_books(books):
